@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # apk add \
 #	abuild apk-tools alpine-conf busybox fakeroot syslinux xorriso
 #	(for efi:) mtools grub-efi
@@ -15,11 +14,14 @@ set -e
 . /usr/share/abuild/functions.sh
 
 # deduce aports directory
-echo $(cd ../aports && pwd)
-[ -z "$APORTS" ] && APORTS=$(cd ../aports && pwd)
-[ -e "$APORTS/main/build-base" ] || die "Unable to deduce cryports base checkout lol"
 
-# 
+[ -z "$APORTS" ] && APORTS="./cryptos/aports"
+#ls -la ./cryptos/aports/main/build-base
+
+ls -la
+[ -e "$APORTS/main/build-base" ] || die "Unable to deduce cryports base checkout lol1"
+
+#
 all_sections=""
 all_profiles=""
 all_checksums="sha256 sha512"
