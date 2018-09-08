@@ -5,7 +5,7 @@ profile_standard() {
 		Network connection is required."
 	profile_base
 	image_ext="iso"
-	apks="$apks opennode"
+	apks="$apks"
 	arch="x86 x86_64 ppc64le"
 	output_format="iso"
 	kernel_cmdline="nomodeset"
