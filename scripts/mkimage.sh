@@ -15,8 +15,9 @@ set -e
 . /usr/share/abuild/functions.sh
 
 # deduce aports directory
-[ -n "$APORTS" ] || APORTS=$(realpath $(dirname $0)/../)
-[ -e "$APORTS/main/build-base" ] || die "Unable to deduce aports base checkout"
+echo $(cd ../aports && pwd)
+[ -z "$APORTS" ] && APORTS=$(cd ../aports && pwd)
+[ -e "$APORTS/main/build-base" ] || die "Unable to deduce cryports base checkout lol"
 
 # 
 all_sections=""
