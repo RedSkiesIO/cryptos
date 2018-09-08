@@ -282,7 +282,7 @@ profile_base() {
 	initfs_cmdline="modules=loop,squashfs,sd-mod,usb-storage quiet"
 	initfs_features="ata base bootchart cdrom squashfs ext2 ext3 ext4 mmc raid scsi usb virtio"
 	grub_mod="disk part_gpt part_msdos linux multiboot2 normal configfile search search_label efi_uga efi_gop fat iso9660 cat echo ls test true help gzio"
-	apks="busybox musl alpine-base pipexec alpine-mirrors busybox kbd-bkeymaps openntpd ethtool hwdata lsof lm_sensors lxc lxc-templates ip6tables iptables e2fsprogs network-extras libressl openssh tzdata opennode"
+	apks="busybox musl alpine-base pipexec alpine-mirrors busybox kbd-bkeymaps openntpd ethtool hwdata lsof lm_sensors ip6tables iptables e2fsprogs network-extras libressl openssh tzdata"
 	apkovl=
 	hostname="cryptos"
 }
