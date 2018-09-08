@@ -16,7 +16,7 @@ CBUILDROOT="$(CTARGET=$TARGET_ARCH . /usr/share/abuild/functions.sh ; echo $CBUI
 [ -z "$CBUILDROOT" ] && die "CBUILDROOT not set for $TARGET_ARCH"
 
 # deduce aports directory
-[ -z "$APORTS" ] && APORTS=${PWD}/../aports
+[ -z "$APORTS" ] && APORTS=$(cd ../aports && pwd)
 [ -e "$APORTS/main/build-base" ] || die "Unable to deduce cryports base checkout"
 
 apkbuildname() {
