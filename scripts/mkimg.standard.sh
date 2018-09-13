@@ -1,6 +1,6 @@
 profile_standard() {
 	title="Standard"
-	desc="Alpine as it was intended.
+	desc="CryptOS as it was intended.
 		Just enough to get you started.
 		Network connection is required."
 	profile_base
