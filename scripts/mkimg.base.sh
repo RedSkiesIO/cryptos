@@ -165,7 +165,7 @@ build_grub_cfg() {
 
 grub_gen_earlyconf() {
 	cat <<- EOF
-	search --no-floppy --set=root --label "alpine-$PROFILE $RELEASE $ARCH"
+	search --no-floppy --set=root --label "CryptOS-$PROFILE $RELEASE $ARCH"
 	set prefix=(\$root)/boot/grub
 	EOF
 }
@@ -255,7 +255,7 @@ create_image_iso() {
 	if [ "$ARCH" = ppc64le ]; then
 		grub-mkrescue --output ${ISO} ${DESTDIR} -follow-links \
 			-sysid LINUX \
-			-volid "alpine-$PROFILE $RELEASE $ARCH"
+			-volid "CryptOS-$PROFILE $RELEASE $ARCH"
 	else
 		xorrisofs \
 			-quiet \
@@ -264,7 +264,7 @@ create_image_iso() {
 			-joliet \
 			-rational-rock \
 			-sysid LINUX \
-			-volid "alpine-$PROFILE $RELEASE $ARCH" \
+			-volid "CryptOS-$PROFILE $RELEASE $ARCH" \
 			$_isolinux \
 			$_efiboot \
 			-follow-links \
