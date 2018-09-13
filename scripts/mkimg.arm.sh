@@ -90,6 +90,6 @@ profile_uboot() {
 	kernel_addons="xtables-addons"
 	initfs_features="base bootchart squashfs ext2 ext3 ext4 kms mmc raid scsi usb"
 	apkovl="genapkovl-dhcp.sh"
-	hostname="cryptos"
+	hostname="cryptos-rpi"
 	uboot_install="yes"
 }
