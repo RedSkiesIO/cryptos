@@ -48,9 +48,9 @@ esac
 
 cat > "$tmp"/etc/apk/repositories <<EOF
 https://cryports.host
-http://dl-cdn.alpinelinux.org/alpine/edge/main
-http://dl-cdn.alpinelinux.org/alpine/edge/community
-http://dl-cdn.alpinelinux.org/alpine/edge/testing
+http://dl-cdn.alpinelinux.org/alpine/v3.7/main
+http://dl-cdn.alpinelinux.org/alpine/v3.7/community
+http://dl-cdn.alpinelinux.org/alpine/v3.7/testing
 EOF
 
 #rm -rf "$tmp"/var/cache/apk/*
