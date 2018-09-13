@@ -151,7 +151,7 @@ build_profile() {
 	[ "$_fail" = "no" ] || return 1
 
 	# Defaults
-	[ -n "$image_name" ] || image_name="alpine-${PROFILE}"
+	[ -n "$image_name" ] || image_name="CryptOS-${PROFILE}"
 	[ -n "$output_filename" ] || output_filename="${image_name}-${RELEASE}-${ARCH}.${image_ext}"
 	local output_file="${OUTDIR:-.}/$output_filename"
 
@@ -169,7 +169,7 @@ build_profile() {
 					[ ! -e "$_fn" ] || cp -Lrs $_fn $DESTDIR/
 				done
 			done
-			echo "${image_name}-${RELEASE} ${build_date}" > "$DESTDIR"/.alpine-release
+			echo "${image_name}-${RELEASE} ${build_date}" > "$DESTDIR"/.cryptos-release
 		fi
 	fi
 
