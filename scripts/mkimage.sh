@@ -5,7 +5,6 @@
 
 # FIXME: clean workdir out of unneeded sections
 # FIXME: --release: cp/mv images to REPODIR/$ARCH/releases/
-# FIXME: --update-latest: rewrite latest-releases.yaml with this build
 
 set -e
 
@@ -60,7 +59,7 @@ usage() {
 
 $0	[--tag RELEASE] [--outdir OUTDIR] [--workdir WORKDIR]
 		[--arch ARCH] [--profile PROFILE] [--hostkeys] [--simulate]
-		[--repository REPO] [--extra-repository REPO] [--yaml FILE]
+		[--repository REPO] [--extra-repository REPO]
 $0	--help
 
 options:
@@ -74,7 +73,6 @@ options:
 --simulate		Don't execute commands
 --tag			Build images for tag RELEASE
 --workdir		Specify temporary working directory (cache)
---yaml
 
 known profiles: $(echo $all_profiles | sort -u)
 
@@ -184,20 +182,12 @@ build_profile() {
 			done
 		fi
 
-		if [ -n "$_yaml_out" ]; then
-			$mkimage_yaml --release $RELEASE \
-				--title "$title" \
-				--desc "$desc" \
-				"$output_file" >> "$_yaml_out"
-		fi
 	fi
 }
 
 # load plugins
 load_plugins "$scriptdir"
 [ -z "$HOME" ] || load_plugins "$HOME/.mkimage"
-
-mkimage_yaml="$(dirname $0)"/mkimage-yaml.sh
 
 # parse parameters
 while [ $# -gt 0 ]; do
@@ -220,7 +210,6 @@ while [ $# -gt 0 ]; do
 	--hostkeys) _hostkeys="--hostkeys";;
 	--simulate) _simulate="yes";;
 	--checksum) _checksum="yes";;
-	--yaml) _yaml="yes";;
 	--) break ;;
 	-*) usage; exit 1;;
 	esac
@@ -275,10 +264,6 @@ for ARCH in $req_arch; do
 	fi
 	apk update --root "$APKROOT"
 
-	if [ "$_yaml" = "yes" ]; then
-		_yaml_out=${OUTDIR:-.}/latest-releases.yaml
-		echo "---" > "$_yaml_out"
-	fi
 	for PROFILE in $req_profiles; do
 		(build_profile) || exit 1
 	done
