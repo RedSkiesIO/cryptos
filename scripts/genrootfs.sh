@@ -47,10 +47,10 @@ case $VERSION_ID in
 esac
 
 cat > "$tmp"/etc/apk/repositories <<EOF
-https://cryports.host
+https://cryports.host/packages/cryptos
 http://dl-cdn.alpinelinux.org/alpine/v3.7/main
 http://dl-cdn.alpinelinux.org/alpine/v3.7/community
-http://dl-cdn.alpinelinux.org/alpine/v3.7/testing
+http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
 #rm -rf "$tmp"/var/cache/apk/*
