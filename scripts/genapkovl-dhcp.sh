@@ -20,6 +20,13 @@ makefile() {
 }
 
 rc_add() {
+    makefile root:root 0644 /etc/init.d/setup <<EOF
+        #!/sbin/openrc-run
+
+        start() {
+	        dialog --title "Hello" --msgbox 'Hello world!' 6 20;
+        }
+EOF
 	mkdir -p "$tmp"/etc/runlevels/"$2"
 	ln -sf /etc/init.d/"$1" "$tmp"/etc/runlevels/"$2"/"$1"
 }
@@ -52,6 +59,7 @@ rc_add mdev sysinit
 rc_add hwdrivers sysinit
 rc_add modloop sysinit
 
+rc_add setup boot
 rc_add hwclock boot
 rc_add modules boot
 rc_add sysctl boot
