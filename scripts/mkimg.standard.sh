@@ -5,10 +5,11 @@ profile_standard() {
 		Network connection is required."
 	profile_base
 	image_ext="iso"
-	apks="$apks syslinux"
+	apks="$apks syslinux accore"
 	arch="x86 x86_64 ppc64le"
 	output_format="iso"
 	kernel_cmdline="nomodeset"
+	apkovl="genapkovl-dhcp.sh"
 	kernel_addons="xtables-addons"
 }
 
