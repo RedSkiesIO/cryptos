@@ -98,7 +98,7 @@ syslinux_gen_config() {
 			cat <<- EOF
 
 			LABEL $_f
-				MENU LABEL Linux $_f
+				MENU LABEL CryptOS Linux $_f
 				KERNEL /boot/vmlinuz-$_f
 				INITRD /boot/initramfs-$_f
 				DEVICETREEDIR /boot/dtbs
@@ -108,7 +108,7 @@ syslinux_gen_config() {
 			cat <<- EOF
 
 			LABEL $_f
-				MENU LABEL Xen/Linux $_f
+				MENU LABEL CryptOS Xen/Linux $_f
 				KERNEL /boot/syslinux/mboot.c32
 				APPEND /boot/xen.gz ${xen_params} --- /boot/vmlinuz$_kf $initfs_cmdline $kernel_cmdline --- /boot/initramfs-$_f
 			EOF
@@ -123,7 +123,7 @@ grub_gen_config() {
 		if [ -z "${xen_params+set}" ]; then
 			cat <<- EOF
 
-			menuentry "Linux $_f" {
+			menuentry "CryptOS Linux $_f" {
 				linux	/boot/vmlinuz-$_f $initfs_cmdline $kernel_cmdline
 				initrd	/boot/initramfs-$_f
 			}
@@ -131,7 +131,7 @@ grub_gen_config() {
 		else
 			cat <<- EOF
 
-			menuentry "Xen/Linux $_f" {
+			menuentry "CryptOS Xen/Linux $_f" {
 				multiboot2	/boot/xen.gz ${xen_params}
 				module2		/boot/vmlinuz-$_f $initfs_cmdline $kernel_cmdline
 				module2		/boot/initramfs-$_f
@@ -283,6 +283,6 @@ profile_base() {
 	initfs_features="ata base bootchart cdrom squashfs ext2 ext3 ext4 mmc raid scsi usb virtio"
 	grub_mod="disk part_gpt part_msdos linux multiboot2 normal configfile search search_label efi_uga efi_gop fat iso9660 cat echo ls test true help gzio"
 	apks="accore busybox musl alpine-base pipexec alpine-mirrors busybox kbd-bkeymaps sfdisk acct iptables openntpd ethtool hwdata lsof lm_sensors e2fsprogs network-extras libressl openssh tzdata accore"
-	apkovl=
-	hostname="cryptos"
+    apkovl="genapkovl-dhcp.sh"
+    hostname="cryptos"
 }
